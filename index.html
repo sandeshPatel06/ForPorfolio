@@ -23,22 +23,27 @@
 
 <body>
   <!-- ===== Navigation ===== -->
-  <header id="home">
+  <header id="home" class="site-header">
     <nav>
-      <div class="left">Sandy's Portfolio</div>
-      <div class="nav-actions">
-        <button class="menu-toggle" aria-label="Toggle navigation">
-          <span class="menu-icon"></span>
-        </button>
-        <button class="theme-toggle" id="theme-toggle" title="Toggle theme">🌙</button>
-      </div>
+      <a href="#home" class="logo" title="Sandesh Patel Portfolio">
+        <span class="logo-avatar">SP</span>
+        <span class="logo-text">Sandesh <span class="logo-accent">Patel</span></span>
+      </a>
       <div class="Right">
         <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle theme">🌙</button>
+        <a href="#contact" class="nav-cta-btn" title="Contact Sandesh">Get in Touch</a>
+        <button class="menu-toggle" aria-label="Toggle navigation menu">
+          <span class="menu-icon"></span>
+        </button>
       </div>
     </nav>
   </header>
@@ -49,7 +54,15 @@
       <h1>👋 Hi, I'm <span class="purple">Sandesh Patel</span></h1>
       <p>I'm a passionate <span id="element"></span></p>
       <div class="buttons">
-        <a href="SandeshPatel_Resume.pdf" class="btn" download>📄 Download Resume</a>
+        <div class="btn-group">
+          <button id="view-resume-btn" class="btn-group-left" type="button" title="View Resume Preview">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Resume
+          </button>
+          <a id="download-resume-btn" href="https://drive.google.com/uc?export=download&id=1xfg6OyvaytkXQuqjgVhSyRAWkr4_91C1" class="btn-group-right" download title="Download Resume PDF">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </a>
+        </div>
         <a target="_blank" class="btn" href="https://github.com/sandeshPatel06">💻 Visit GitHub</a>
       </div>
     </div>
@@ -215,14 +228,25 @@
   <!-- ===== Footer ===== -->
   <footer>
     <div class="footer">
-      <div class="footer-first">Sandy's Portfolio Website</div>
-      <div class="footer-second">
-        <ul>
-          <li><a href="https://www.instagram.com/sandesh_patel007" target="_blank">Instagram</a></li>
-          <li><a href="https://www.linkedin.com/in/sandesh-patel07" target="_blank">LinkedIn</a></li>
-          <li><a href="mailto:sandeshpatel.sp.93@gmail.com">Email</a></li>
-          <li><a href="https://github.com/sandeshPatel06" target="_blank">GitHub</a></li>
-        </ul>
+      <div class="footer-first">Sandesh Patel</div>
+      <p class="footer-tagline">Web Developer • Cybersecurity Enthusiast • Python Programmer</p>
+      <div class="footer-social-links">
+        <a href="https://github.com/sandeshPatel06" target="_blank" class="social-btn" title="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          <span>GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/sandesh-patel07" target="_blank" class="social-btn" title="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://www.instagram.com/sandesh_patel007" target="_blank" class="social-btn" title="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          <span>Instagram</span>
+        </a>
+        <a href="mailto:sandeshpatel.sp.93@gmail.com" class="social-btn" title="Email">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span>Email</span>
+        </a>
       </div>
     </div>
     <div class="footer-rights">
@@ -230,9 +254,33 @@
         <li><a href="#">Privacy Policy</a></li>
         <li><a href="#">Terms of Service</a></li>
       </ul>
-      &copy; 2025 SandeshPortfolioWebsite.com | All rights reserved
+      <p class="copyright-text">&copy; <span id="copyright-year"></span> <span id="footer-domain"></span> | All rights reserved</p>
     </div>
   </footer>
+
+  <!-- ===== PDF Preview Modal ===== -->
+  <div id="pdf-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="pdf-modal-title">
+    <div class="modal-content pdf-modal-content">
+      <div class="pdf-modal-header">
+        <h3 id="pdf-modal-title" class="pdf-modal-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          Resume Preview
+        </h3>
+        <div class="pdf-modal-actions">
+          <a id="modal-external-btn" href="#" target="_blank" class="modal-icon-btn" title="Open in New Tab">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+          <a id="modal-download-btn" href="#" download class="modal-icon-btn" title="Download PDF">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </a>
+          <button id="close-pdf-modal" class="modal-close-btn" aria-label="Close Preview">&times;</button>
+        </div>
+      </div>
+      <div class="pdf-modal-body">
+        <iframe id="pdf-frame" src="" title="PDF Resume Preview"></iframe>
+      </div>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <!-- ===== Typed.js for Animated Hero Text ===== -->
