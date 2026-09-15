@@ -1,27 +1,53 @@
 /* ==== Root Variables for Colors and Fonts ==== */
 :root {
-  --primary-color: #5b69e8;
-  --secondary-color: #793cc9;
-  --nav-bg: #ffffff;
-  --footer-bg: #f0f0f0;
-  --text-light: #222;
-  --text-muted: #555;
-  --highlight-color: #9e59df;
-  --background: #f7f8fa;
-  --card-bg: #fff;
-  --font-stack: "Poppins", sans-serif, "Gill Sans", Calibri, "Trebuchet MS";
-  --shadow: 0 4px 24px rgba(91, 105, 232, 0.08);
+  /* Primary & Accent Color Tokens */
+  --primary-color: #4f46e5;
+  --primary-hover: #4338ca;
+  --secondary-color: #7c3aed;
+  --secondary-hover: #6d28d9;
+  --highlight-color: #ec4899;
+
+  /* Vibrant Modern Gradients */
+  --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%);
+  --badge-gradient: linear-gradient(135deg, rgba(79, 70, 229, 0.12) 0%, rgba(124, 58, 237, 0.12) 100%);
+
+  /* Light Theme Surfaces & Typography */
+  --nav-bg: rgba(255, 255, 255, 0.85);
+  --footer-bg: #f1f5f9;
+  --text-light: #0f172a;
+  --text-muted: #475569;
+  --background: #f8fafc;
+  --card-bg: #ffffff;
+  --card-border: rgba(226, 232, 240, 0.8);
+  --font-stack: "Inter", "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --shadow: 0 10px 30px -10px rgba(79, 70, 229, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+  --shadow-hover: 0 20px 40px -15px rgba(79, 70, 229, 0.25);
+  --glass-backdrop: blur(12px);
 }
 
-/* ==== Dark Theme ==== */
+/* ==== Dark Theme (Cyber Midnight Glass) ==== */
 html[data-theme="dark"] {
-  --nav-bg: #191960;
-  --footer-bg: #0e0e2d;
-  --text-light: #f3f3f3;
-  --text-muted: #c6e1ea;
-  --background: #10102a;
-  --card-bg: #18183a;
-  --shadow: 0 4px 24px rgba(91, 105, 232, 0.18);
+  --primary-color: #818cf8;
+  --primary-hover: #a5b4fc;
+  --secondary-color: #c084fc;
+  --secondary-hover: #d8b4fe;
+  --highlight-color: #f472b6;
+
+  /* Dark Theme Gradients */
+  --primary-gradient: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
+  --badge-gradient: linear-gradient(135deg, rgba(129, 140, 248, 0.18) 0%, rgba(192, 132, 252, 0.18) 100%);
+
+  /* Dark Theme Surfaces & Typography */
+  --nav-bg: rgba(11, 15, 25, 0.85);
+  --footer-bg: #070a11;
+  --text-light: #f8fafc;
+  --text-muted: #94a3b8;
+  --background: #0b0f19;
+  --card-bg: rgba(17, 24, 39, 0.75);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --shadow: 0 10px 35px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(99, 102, 241, 0.15);
+  --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 30px rgba(129, 140, 248, 0.25);
+  --glass-backdrop: blur(16px);
 }
 
 /* ==== Base Styles ==== */
@@ -31,7 +57,7 @@ body {
   font-family: var(--font-stack);
   margin: 0;
   padding: 0;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 html {
   scroll-behavior: smooth;
@@ -79,30 +105,34 @@ hr {
 /* ==== Navigation ==== */
 nav {
   display: flex;
-  justify-content: flex-end; /* always push actions to far right */
+  justify-content: flex-end;
   align-items: center;
   height: 64px;
   background-color: var(--nav-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border-bottom: 1px solid var(--card-border);
   padding: 0 32px;
   color: var(--text-light);
   box-shadow: var(--shadow);
   position: relative;
   z-index: 1000;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 nav .left {
-  margin-right: auto; /* push everything else to the right */
-  font-weight: 700;
+  margin-right: auto;
+  font-weight: 800;
   font-size: 1.5rem;
-  letter-spacing: 1px;
-  color: var(--primary-color);
+  letter-spacing: 0.5px;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 nav .nav-actions {
   display: flex;
   align-items: center;
   gap: 12px;
-  /* Remove margin-left: auto; */
 }
 
 nav.sticky {
@@ -110,16 +140,16 @@ nav.sticky {
   top: 0;
   left: 0;
   right: 0;
-  width: 97%; /* fix width for sticky nav */
+  width: 97%;
   background-color: var(--nav-bg);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   animation: fadeInDown 0.3s ease;
   z-index: 1000;
 }
 
-/* Add this to prevent content jump when navbar becomes sticky */
 body.sticky-nav-active {
-  /* Height of navbar (64px) + some margin */
   margin-top: 64px;
 }
 
@@ -127,18 +157,13 @@ body.sticky-nav-active {
   from { top: -64px; opacity: 0; }
   to { top: 0; opacity: 1; }
 }
-nav .left {
-  font-weight: 700;
-  font-size: 1.5rem;
-  letter-spacing: 1px;
-  color: var(--primary-color);
-}
+
 nav ul {
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 28px;
+  gap: 24px;
 }
 nav ul li {
   margin: 0;
@@ -146,16 +171,18 @@ nav ul li {
 nav ul li a {
   text-decoration: none;
   color: var(--text-light);
-  font-size: 1rem;
+  font-size: 0.98rem;
   font-weight: 600;
-  padding: 8px 14px;
-  border-radius: 6px;
-  transition: color 0.3s, background 0.3s;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: color 0.3s ease, background 0.3s ease, transform 0.2s ease;
 }
 nav ul li a:hover,
 nav ul li a.active {
   color: #fff;
-  background: var(--primary-color);
+  background: var(--primary-gradient);
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25);
+  transform: translateY(-1px);
 }
 .menu-toggle {
   display: none;
@@ -211,135 +238,190 @@ nav ul li a.active {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 48px 32px;
+  padding: 48px 36px;
   background-color: var(--card-bg);
-  margin-top: 80px;
-  border-radius: 16px;
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--card-border);
+  margin-top: 40px;
+  border-radius: 20px;
   box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.firstsection:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(99, 102, 241, 0.25);
 }
 .firstsection > div {
   flex: 1;
   margin: 10px;
 }
 .leftsection {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
+  line-height: 1.7;
   padding-right: 24px;
 }
 .leftsection .purple {
-  color: var(--highlight-color);
-  font-weight: 700;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
 }
 .leftsection .btn,
 .buttons .btn {
-  background-color: var(--primary-color);
+  background: var(--primary-gradient);
   color: #fff;
-  padding: 12px 24px;
-  border-radius: 8px;
+  padding: 12px 26px;
+  border-radius: 10px;
   text-decoration: none;
-  margin: 10px 10px 10px 0;
+  margin: 12px 12px 12px 0;
   display: inline-block;
   font-size: 1rem;
-  border: 2px solid transparent;
+  border: none;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(91, 105, 232, 0.08);
-  transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
 }
 .buttons .btn {
-  background-color: var(--secondary-color);
+  background: var(--primary-gradient);
 }
 .leftsection .btn:hover,
 .buttons .btn:hover {
-  background-color: var(--highlight-color);
-  box-shadow: 0 4px 16px rgba(91, 105, 232, 0.18);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.35);
+  filter: brightness(1.1);
 }
 .rightsection {
   text-align: center;
 }
 .rightsection img {
-  max-width: 340px;
-  border-radius: 16px;
-  box-shadow: var(--shadow);
+  max-width: 320px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-hover);
+  border: 2px solid var(--card-border);
+  transition: transform 0.3s ease;
+}
+.rightsection img:hover {
+  transform: scale(1.02);
 }
 
 /* ==== Section Cards (Education, Skills, Projects) ==== */
 .services-container {
   background-color: var(--card-bg);
-  padding: 32px 24px;
-  margin: 32px auto;
-  border-radius: 16px;
-  max-width: 900px;
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--card-border);
+  padding: 36px 32px;
+  margin: 36px auto;
+  border-radius: 20px;
+  max-width: 920px;
   box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.services-container:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(99, 102, 241, 0.25);
 }
 .services-container h2 {
-  color: var(--primary-color);
-  font-size: 1.5rem;
-  margin-bottom: 18px;
-  font-weight: 700;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
 }
 .services-container ul {
-  padding-left: 18px;
+  padding-left: 20px;
 }
 .services-container ul li {
-  margin: 10px 0;
+  margin: 12px 0;
   color: var(--text-light);
   font-size: 1.05rem;
+  line-height: 1.6;
+}
+.services-container ul li a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+.services-container ul li a:hover {
+  color: var(--highlight-color);
+  text-decoration: underline;
 }
 
 /* ==== Timeline ==== */
 .secondsection {
   background-color: var(--card-bg);
-  padding: 48px 24px;
-  text-align: center;
-  max-width: 1000px;
-  margin: 32px auto;
-  border-radius: 16px;
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--card-border);
+  padding: 52px 32px;
+  text-align: left;
+  max-width: 920px;
+  margin: 36px auto;
+  border-radius: 20px;
   box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.secondsection:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(99, 102, 241, 0.25);
 }
 .section-heading {
   text-align: center;
   font-size: 2.2rem;
-  color: var(--highlight-color);
-  margin-bottom: 10px;
-  font-weight: 700;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
 }
 .section-subheading {
   text-align: center;
-  font-size: 1rem;
-  margin-bottom: 40px;
+  font-size: 1.05rem;
+  margin-bottom: 44px;
   color: var(--text-muted);
 }
 .timeline {
-  border-left: 2px solid var(--primary-color);
+  border-left: 3px solid var(--primary-color);
   margin-left: 20px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 32px;
   position: relative;
-  padding-left: 20px;
+  padding-left: 24px;
 }
 .timeline-item {
-  padding-left: 20px;
+  padding-left: 24px;
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: -11px;
-  top: 5px;
+  left: -33px;
+  top: 6px;
   width: 14px;
   height: 14px;
-  background: var(--primary-color);
+  background: var(--primary-gradient);
   border-radius: 50%;
-  border: 2px solid #fff;
-  box-shadow: 0 2px 8px rgba(91, 105, 232, 0.12);
+  border: 3px solid var(--card-bg);
+  box-shadow: 0 0 12px rgba(79, 70, 229, 0.4);
 }
 .timeline-date {
-  font-weight: bold;
-  color: var(--highlight-color);
-  font-size: 1rem;
-  margin-bottom: 5px;
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--primary-color);
+  background: var(--badge-gradient);
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+  border: 1px solid var(--card-border);
 }
 .timeline-content h3 {
   margin: 0;
@@ -355,72 +437,75 @@ nav ul li a.active {
 
 /* ==== Contact Section ==== */
 #contact {
-  max-width: 500px;
+  max-width: 520px;
   margin: 60px auto;
-  padding: 32px 24px;
+  padding: 40px 32px;
   background-color: var(--card-bg);
-  border-radius: 16px;
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
   box-shadow: var(--shadow);
   color: var(--text-light);
   font-family: var(--font-stack);
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#contact:hover {
+  box-shadow: var(--shadow-hover);
 }
 #contact h2 {
   text-align: center;
-  color: var(--highlight-color);
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 25px;
-  font-weight: 700;
-  font-size: 1.5rem;
+  font-weight: 800;
+  font-size: 1.6rem;
 }
 #contact form {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 16px;
 }
 #contact input,
 #contact textarea {
-  padding: 12px 15px;
-  border-radius: 8px;
-  border: 1px solid #d0d0d0;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
   background-color: var(--background);
   color: var(--text-light);
   font-size: 1rem;
   resize: vertical;
-  transition: border-color 0.3s, background 0.3s;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   font-family: inherit;
-  margin-bottom: 0;
 }
 #contact input:focus,
 #contact textarea:focus {
   border-color: var(--primary-color);
   outline: none;
-  background: #f3f6ff;
-}
-html[data-theme="dark"] #contact input,
-html[data-theme="dark"] #contact textarea {
-  background: #18183a;
-  border-color: #444;
-  color: #fff;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
 }
 #contact button.btn {
-  background-color: var(--primary-color);
+  background: var(--primary-gradient);
   color: #fff;
-  padding: 12px 20px;
+  padding: 14px 24px;
   font-size: 1rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(91, 105, 232, 0.08);
-  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
   margin-top: 8px;
 }
 #contact button.btn:hover {
-  background-color: var(--highlight-color);
-  box-shadow: 0 4px 16px rgba(91, 105, 232, 0.18);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.35);
+  filter: brightness(1.1);
 }
 #form-status {
   margin-top: 10px;
