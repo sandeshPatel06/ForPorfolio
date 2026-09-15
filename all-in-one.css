@@ -498,6 +498,78 @@ nav ul li a.active {
   text-decoration: underline;
 }
 
+/* ==== Project Cards & Action Links ==== */
+.project-list {
+  list-style: none !important;
+  padding-left: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+.project-item {
+  background: var(--bg-hover);
+  border: 1px solid var(--card-border);
+  padding: 18px 20px;
+  border-radius: 12px;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.project-item:hover {
+  border-color: rgba(79, 70, 229, 0.35);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+.project-title {
+  font-weight: 700;
+  font-size: 1.12rem;
+  color: var(--text-color);
+  margin-bottom: 6px;
+}
+.project-desc {
+  font-size: 0.98rem;
+  color: var(--text-light);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+.project-link.github-link {
+  background-color: var(--card-bg);
+  color: var(--text-color) !important;
+  border: 1px solid var(--card-border);
+}
+.project-link.github-link:hover {
+  background-color: var(--card-border);
+  color: var(--primary-color) !important;
+}
+.project-link.live-link {
+  background-color: var(--primary-color);
+  color: #ffffff !important;
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 3px 10px rgba(79, 70, 229, 0.25);
+}
+.project-link.live-link:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+}
+
 /* ==== Timeline ==== */
 .secondsection {
   background-color: var(--card-bg);
