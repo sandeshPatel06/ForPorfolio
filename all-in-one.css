@@ -64,7 +64,7 @@ img {
 }
 hr {
   border: none;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--card-border);
   margin: 40px 0;
 }
 
@@ -339,7 +339,7 @@ nav ul li a.active {
   line-height: 1.7;
   padding-right: 24px;
 }
-.leftsection .purple {
+.leftsection .highlight-text {
   color: var(--primary-color);
   font-weight: 800;
 }
